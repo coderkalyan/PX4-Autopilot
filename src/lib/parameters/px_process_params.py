@@ -130,9 +130,9 @@ def main():
     if not scanner.ScanDir(args.src_path, parser):
         sys.exit(1)
 
-    if not parser.Validate():
+    if not parser.validate():
         sys.exit(1)
-    param_groups = parser.GetParamGroups()
+    param_groups = parser.parameter_groups
 
     if len(param_groups) == 0:
         print("Warning: no parameters found")
@@ -146,10 +146,10 @@ def main():
     override_dict = json.loads(args.overrides)
     if len(override_dict.keys()) > 0:
         for group in param_groups:
-            for param in group.GetParams():
-                name = param.GetName()
+            for param in group.parameters:
+                name = param.name
                 if name in override_dict.keys():
-                    val = str(override_dict[param.GetName()])
+                    val = str(override_dict[param.name])
                     param.default = val
                     print("OVERRIDING {:s} to {:s}!!!!!".format(name, val))
 
