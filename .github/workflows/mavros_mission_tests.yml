@@ -55,10 +55,15 @@ jobs:
           ccache -s
           ccache -z
 
+    # TODO: move these to the docker image
+    - name: python dependencies
+      run: pip3 install dataclasses future-annotations
+
     - name: check environment
       run: |
           export
           ulimit -a
+          python3 --version
     - name: Build PX4 and sitl_gazebo
       env:
         PX4_CMAKE_BUILD_TYPE: ${{matrix.config.build_type}}
