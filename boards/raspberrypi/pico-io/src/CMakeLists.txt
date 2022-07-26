@@ -1,6 +1,6 @@
 ############################################################################
 #
-#   Copyright (c) 2015-2017 PX4 Development Team. All rights reserved.
+#   Copyright (c) 2021 PX4 Development Team. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions
@@ -31,31 +31,19 @@
 #
 ############################################################################
 
-option(PX4IO_PERF "Enable px4io perf counters" OFF)
-
-add_library(px4iofirmware
-	#adc.cpp
-	controls.cpp
-	mixer.cpp
-	px4io.cpp
-	registers.c
-	#safety_button.cpp
-	#serial.cpp
+add_library(drivers_board
+	boot_string.c
+	init.c
+	led.c
+	timer_config.cpp
+	usb.c
 )
 
-set_property(GLOBAL APPEND PROPERTY PX4_MODULE_LIBRARIES px4iofirmware)
-target_link_libraries(px4iofirmware
-	PUBLIC
+target_link_libraries(drivers_board
+	PRIVATE
 		arch_io_pins
-		arch_watchdog_iwdg
-		nuttx_apps
-		nuttx_arch
-		nuttx_c
-		nuttx_mm
-		rc
+		drivers__led # drv_led_start
+		nuttx_arch # sdio
+		nuttx_drivers # sdio
+		px4_layer
 )
-
-if(PX4IO_PERF)
-	target_compile_definitions(px4iofirmware PRIVATE PX4IO_PERF)
-	target_link_libraries(px4iofirmware PRIVATE perf)
-endif()

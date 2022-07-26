@@ -47,7 +47,7 @@
 
 #include <drivers/drv_hrt.h>
 #include <drivers/drv_pwm_output.h>
-#include <stm32_pwr.h>
+//#include <stm32_pwr.h>
 #include <rc/dsm.h>
 #include <rc/sbus.h>
 
