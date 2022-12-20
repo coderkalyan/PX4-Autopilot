@@ -1,0 +1,9 @@
+#!/bin/sh
+#
+# board specific sensors init
+#------------------------------------------------------------------------------
+
+# board_adc start
+
+icm42605 start -s start
+icp201xx start -i start

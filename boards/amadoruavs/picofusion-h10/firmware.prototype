@@ -1,0 +1,13 @@
+{
+    "board_id": 43,
+    "magic": "PICOFUSIONH10",
+    "description": "Firmware for the AmadorUAVs PicoFusion H10 module",
+    "image": "",
+    "build_time": 0,
+    "summary": "AmadorUAVsPicoFusionH10",
+    "version": "0.1",
+    "image_size": 0,
+    "image_maxsize": 1032192,
+    "git_identity": "",
+    "board_revision": 0
+}
