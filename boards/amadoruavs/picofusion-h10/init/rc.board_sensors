@@ -5,5 +5,5 @@
 
 # board_adc start
 
-icm42605 start -s start
-icp201xx start -i start
+icm42605 -s start
+icp201xx -f 400 -X -b 1 start
