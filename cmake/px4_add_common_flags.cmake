@@ -68,14 +68,14 @@ function(px4_add_common_flags)
 		# Warnings
 		-Wall
 		-Wextra
-		-Werror
+		# -Werror
 
 		-Warray-bounds
 		-Wcast-align
 		-Wdisabled-optimization
 		-Wdouble-promotion
 		-Wfatal-errors
-		-Wfloat-equal
+		# -Wfloat-equal
 		-Wformat-security
 		-Winit-self
 		-Wlogical-op
