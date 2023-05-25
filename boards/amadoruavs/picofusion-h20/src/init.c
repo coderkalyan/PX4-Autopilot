@@ -85,7 +85,7 @@
 
 __EXPORT void stm32_boardinitialize(void)
 {
-	watchdog_init();
+	// watchdog_init();
 
 	/* configure pins */
 	const uint32_t gpio[] = PX4_GPIO_INIT_LIST;
@@ -103,7 +103,7 @@ __EXPORT void stm32_boardinitialize(void)
 		stm32_configgpio(GPIO_USART2_RX_GPIO);
 
 		while (1) {
-			watchdog_pet();
+			// watchdog_pet();
 			stm32_gpiowrite(GPIO_USART2_TX_GPIO, stm32_gpioread(GPIO_USART1_RX_GPIO));
 			stm32_gpiowrite(GPIO_USART1_TX_GPIO, stm32_gpioread(GPIO_USART2_RX_GPIO));
 		}
