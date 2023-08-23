@@ -51,7 +51,7 @@
  * files in nuttx*/
 
 #include "board_config.h"
-#include "uavcan.h"
+// #include "uavcan.h"
 #include <nuttx/compiler.h>
 
 #include <stdint.h>
@@ -127,4 +127,4 @@
 /* Bootloader Option*****************************************************************
  *
  */
-#define GPIO_GETNODEINFO_JUMPER (GPIO_BOOT_CONFIG & ~GPIO_EXTI)
+// #define GPIO_GETNODEINFO_JUMPER (GPIO_BOOT_CONFIG & ~GPIO_EXTI)

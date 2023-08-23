@@ -33,7 +33,7 @@
  *
  ****************************************************************************/
 
-/* The STM32F412 has 512Kb of FLASH beginning at address 0x0800:0000 and
+/* The STM32F412CG has 1MB of FLASH beginning at address 0x0800:0000 and
  * 256Kb of SRAM. SRAM is split up into three blocks:
  *
  * 1) 112Kb of SRAM beginning at address 0x2000:0000
@@ -50,8 +50,10 @@
 
 MEMORY
 {
-    flash (rx)   : ORIGIN = 0x08010000, LENGTH = 448K
-    sram (rwx)   : ORIGIN = 0x20000000, LENGTH = 192K
+    /* flash (rx)   : ORIGIN = 0x08010000, LENGTH = 928K */
+    flash (rx)   : ORIGIN = 0x08004000, LENGTH = 928K
+    /* flash (rx)   : ORIGIN = 0x08000000, LENGTH = 960K */
+    sram (rwx)   : ORIGIN = 0x20000000, LENGTH = 256K
 }
 
 OUTPUT_ARCH(arm)
@@ -64,7 +66,7 @@ EXTERN(_vectors)	/* force the vectors to be included in the output */
  * code pulled in by libgcc.a requires it (and that code cannot be easily avoided).
  */
 EXTERN(abort)
-EXTERN(_bootdelay_signature)
+/* EXTERN(_bootdelay_signature) */
 
 SECTIONS
 {
@@ -79,7 +81,7 @@ SECTIONS
 		* uavcan bootloader has the ability to validate the
 		* image crc, size etc
 		*/
-		KEEP(*(.app_descriptor))
+		/* KEEP(*(.app_descriptor)) */
 		*(.text .text.*)
 		*(.fixup)
 		*(.gnu.warning)

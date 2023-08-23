@@ -38,10 +38,10 @@
  * Included Files
  ****************************************************************************/
 
-#include <px4_config.h>
+#include <px4_platform_common/px4_config.h>
 #include <stdint.h>
 #include "boot_config.h"
-#include "board.h"
+#include "../nuttx-config/include/board.h"
 
 #include <debug.h>
 #include <string.h>
@@ -62,17 +62,17 @@
 
 __EXPORT void stm32_boardinitialize(void)
 {
-	putreg32(getreg32(STM32_RCC_APB1ENR) | RCC_APB1ENR_CAN1EN, STM32_RCC_APB1ENR);
-	stm32_configgpio(GPIO_CAN1_RX);
-	stm32_configgpio(GPIO_CAN1_TX);
-	stm32_configgpio(GPIO_CAN1_SILENT_S0);
-	stm32_configgpio(GPIO_CAN1_TERMINATION);
-	putreg32(getreg32(STM32_RCC_APB1RSTR) | RCC_APB1RSTR_CAN1RST, STM32_RCC_APB1RSTR);
-	putreg32(getreg32(STM32_RCC_APB1RSTR) & ~RCC_APB1RSTR_CAN1RST, STM32_RCC_APB1RSTR);
+	// putreg32(getreg32(STM32_RCC_APB1ENR) | RCC_APB1ENR_CAN1EN, STM32_RCC_APB1ENR);
+	// stm32_configgpio(GPIO_CAN1_RX);
+	// stm32_configgpio(GPIO_CAN1_TX);
+	// stm32_configgpio(GPIO_CAN1_SILENT_S0);
+	// stm32_configgpio(GPIO_CAN1_TERMINATION);
+	// putreg32(getreg32(STM32_RCC_APB1RSTR) | RCC_APB1RSTR_CAN1RST, STM32_RCC_APB1RSTR);
+	// putreg32(getreg32(STM32_RCC_APB1RSTR) & ~RCC_APB1RSTR_CAN1RST, STM32_RCC_APB1RSTR);
 
-#if defined(OPT_WAIT_FOR_GETNODEINFO_JUMPER_GPIO)
-	stm32_configgpio(GPIO_GETNODEINFO_JUMPER);
-#endif
+// #if defined(OPT_WAIT_FOR_GETNODEINFO_JUMPER_GPIO)
+// 	stm32_configgpio(GPIO_GETNODEINFO_JUMPER);
+// #endif
 
 }
 
@@ -87,7 +87,7 @@ __EXPORT void stm32_boardinitialize(void)
 
 void board_deinitialize(void)
 {
-	putreg32(getreg32(STM32_RCC_APB1RSTR) | RCC_APB1RSTR_CAN1RST, STM32_RCC_APB1RSTR);
+	// putreg32(getreg32(STM32_RCC_APB1RSTR) | RCC_APB1RSTR_CAN1RST, STM32_RCC_APB1RSTR);
 }
 
 /****************************************************************************
@@ -109,9 +109,9 @@ void board_deinitialize(void)
 
 uint8_t board_get_product_name(uint8_t *product_name, size_t maxlen)
 {
-	DEBUGASSERT(maxlen > UAVCAN_STRLEN(HW_UAVCAN_NAME));
-	memcpy(product_name, HW_UAVCAN_NAME, UAVCAN_STRLEN(HW_UAVCAN_NAME));
-	return UAVCAN_STRLEN(HW_UAVCAN_NAME);
+	// DEBUGASSERT(maxlen > UAVCAN_STRLEN(HW_UAVCAN_NAME));
+	// memcpy(product_name, HW_UAVCAN_NAME, UAVCAN_STRLEN(HW_UAVCAN_NAME));
+	// return UAVCAN_STRLEN(HW_UAVCAN_NAME);
 }
 
 /****************************************************************************
@@ -129,15 +129,15 @@ uint8_t board_get_product_name(uint8_t *product_name, size_t maxlen)
  *
  ****************************************************************************/
 
-size_t board_get_hardware_version(uavcan_HardwareVersion_t *hw_version)
-{
-	memset(hw_version, 0, sizeof(uavcan_HardwareVersion_t));
+// size_t board_get_hardware_version(uavcan_HardwareVersion_t *hw_version)
+// {
+	// memset(hw_version, 0, sizeof(uavcan_HardwareVersion_t));
 
-	hw_version->major = HW_VERSION_MAJOR;
-	hw_version->minor = HW_VERSION_MINOR;
+	// hw_version->major = HW_VERSION_MAJOR;
+	// hw_version->minor = HW_VERSION_MINOR;
 
-	return board_get_mfguid(*(mfguid_t *) hw_version->unique_id);
-}
+	// return board_get_mfguid(*(mfguid_t *) hw_version->unique_id);
+// }
 
 /****************************************************************************
  * Name: board_indicate
@@ -179,10 +179,10 @@ static const  led_t i2l[] = {
 
 };
 
-void board_indicate(uiindication_t indication)
-{
-	rgb_led(i2l[indication].red,
-		i2l[indication].green,
-		i2l[indication].blue,
-		i2l[indication].hz);
-}
+// void board_indicate(uiindication_t indication)
+// {
+// 	rgb_led(i2l[indication].red,
+// 		i2l[indication].green,
+// 		i2l[indication].blue,
+// 		i2l[indication].hz);
+// }

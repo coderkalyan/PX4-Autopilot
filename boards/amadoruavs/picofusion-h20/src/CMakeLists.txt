@@ -36,8 +36,8 @@ if("${PX4_BOARD_LABEL}" STREQUAL  "canbootloader")
 	add_library(drivers_board
 		boot_config.h
 		boot.c
-		led.c
-		led.h
+		# led.c
+		# led.h
 	)
 	target_link_libraries(drivers_board
 		PRIVATE
@@ -52,7 +52,7 @@ else()
 		can.c
 		i2c.cpp
 		init.c
-		led.c
+		# led.c
 		spi.cpp
 	)
 
