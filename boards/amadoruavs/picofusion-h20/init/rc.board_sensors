@@ -8,4 +8,4 @@ icm42688p -R 0 -s start
 
 icp201xx -I -b 2 start
 
-# bmm150 -I -b 1 start
+mmc5983ma -I -b 1 start

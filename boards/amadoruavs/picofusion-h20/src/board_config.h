@@ -86,21 +86,24 @@
 #define GPIO_USART2_RX_GPIO	(GPIO_INPUT|GPIO_PULLUP|GPIO_SPEED_50MHz|GPIO_PORTA|GPIO_PIN3)
 #define GPIO_USART2_TX_GPIO	(GPIO_OUTPUT|GPIO_PUSHPULL|GPIO_PULLUP|GPIO_SPEED_50MHz|GPIO_PORTA|GPIO_PIN2)
 
-// #define FLASH_BASED_PARAMS
+#define GPIO_HEATER_OUTPUT (GPIO_OUTPUT|GPIO_PUSHPULL|GPIO_SPEED_2MHz|GPIO_OUTPUT_CLEAR|GPIO_PORTC|GPIO_PIN14)
+#define HEATER_OUTPUT_EN(on_true)   px4_arch_gpiowrite(GPIO_HEATER_OUTPUT, (on_true))
 
-/* High-resolution timer */
+#define FLASH_BASED_PARAMS
+
+    /* High-resolution timer */
 #define HRT_TIMER                    3  /* use timer 3 for the HRT */
 #define HRT_TIMER_CHANNEL            4  /* use capture/compare channel 4 */
 
-		// GPIO_BOOT_CONFIG,                
-		// GPIO_CAN1_TX,                     
-		// GPIO_CAN1_RX,                     
-		// GPIO_CAN1_SILENT_S0,              
-		// GPIO_BTN_SAFETY,                  
+// GPIO_BOOT_CONFIG,
+// GPIO_CAN1_TX,
+// GPIO_CAN1_RX,
+// GPIO_CAN1_SILENT_S0,
+// GPIO_BTN_SAFETY,
 #define PX4_GPIO_INIT_LIST { \
-		GPIO_I2C1_SCL_RESET,              \
-		GPIO_I2C1_SDA_RESET,              \
-	}
+    GPIO_I2C1_SCL_RESET,              \
+    GPIO_I2C1_SDA_RESET,              \
+}
 
 __BEGIN_DECLS
 
@@ -115,4 +118,6 @@ extern void stm32_spiinitialize(void);
 
 #endif /* __ASSEMBLY__ */
 
-__END_DECLS
+#define BOARD_ENABLE_CONSOLE_BUFFER
+
+    __END_DECLS

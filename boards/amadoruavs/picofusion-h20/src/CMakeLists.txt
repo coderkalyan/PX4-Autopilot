@@ -46,7 +46,6 @@ if("${PX4_BOARD_LABEL}" STREQUAL  "canbootloader")
 			canbootloader
 	)
 	target_include_directories(drivers_board PRIVATE ${PX4_SOURCE_DIR}/platforms/nuttx/src/canbootloader)
-
 else()
 	add_library(drivers_board
 		can.c
@@ -54,6 +53,7 @@ else()
 		init.c
 		# led.c
 		spi.cpp
+        usb.c
 	)
 
 	target_link_libraries(drivers_board
